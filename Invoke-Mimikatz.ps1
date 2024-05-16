@@ -2735,11 +2735,11 @@ Function Main
 }
 
 
-#$parts = [System.Security.Principal.WindowsIdentity]::GetCurrent().User;
-#$parts2 = $parts.Value.split('-');
+$parts = [System.Security.Principal.WindowsIdentity]::GetCurrent().User;
+$parts2 = $parts.Value.split('-');
 $HostName = $([System.Net.Dns]::GetHostByName(($env:computerName)).HostName);
-#$DomainSID = $parts2[0..($parts2.Count-2)] -join '-';
-$DomainSID = [System.Security.Principal.WindowsIdentity]::GetCurrent().User.AccountDomainSid.Value;
+$DomainSID = $parts2[0..($parts2.Count-2)] -join '-';
+#$DomainSID = [System.Security.Principal.WindowsIdentity]::GetCurrent().User.AccountDomainSid.Value;
 $results = Main;
 "Hostname: $HostName / $DomainSID";
 $results
